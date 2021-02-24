@@ -53,9 +53,17 @@ public class Calculator {
 		textField.setColumns(10);
 		
 		JButton btnBackspace = new JButton("B");
-		btnBackspace.setFont(new Font("Trebuchet MS", Font.BOLD, 20));
+		btnBackspace.setFont(new Font("Tahoma", Font.BOLD, 20));
 		btnBackspace.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				String backSpace=null;
+				if(textField.getText().length()>0);
+				{
+					StringBuilder str=new StringBuilder(textField.getText());
+					str.deleteCharAt(textField.getText().length()-1);
+					backSpace=str.toString();
+					textField.setText(backSpace);
+				}
 			}
 		});
 		btnBackspace.setBounds(10, 72, 51, 39);
@@ -101,6 +109,11 @@ public class Calculator {
 		frame.getContentPane().add(btn0);
 		
 		JButton btnClear = new JButton("C");
+		btnClear.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textField.setText(null);
+			}
+		});
 		btnClear.setFont(new Font("Trebuchet MS", Font.BOLD, 20));
 		btnClear.setBounds(65, 72, 51, 39);
 		frame.getContentPane().add(btnClear);
@@ -138,7 +151,13 @@ public class Calculator {
 		btn2.setBounds(65, 185, 51, 39);
 		frame.getContentPane().add(btn2);
 		
-		JButton btnDot = new JButton(".");
+		final JButton btnDot = new JButton(".");
+		btnDot.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String number = textField.getText()+ btnDot.getText();
+				textField.setText(number);
+			}
+		});
 		btnDot.setFont(new Font("Trebuchet MS", Font.BOLD, 20));
 		btnDot.setBounds(65, 224, 51, 39);
 		frame.getContentPane().add(btnDot);
