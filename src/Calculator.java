@@ -3,9 +3,11 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
+
 import javax.swing.SwingConstants;
 
 
@@ -13,6 +15,11 @@ public class Calculator {
 
 	private JFrame frame;
 	private JTextField textField;
+	double first;
+	double second;
+	double result;
+	String operation;
+	String answer;
 
 	/**
 	 * Launch the application.
@@ -201,32 +208,104 @@ public class Calculator {
 		frame.getContentPane().add(btn3);
 		
 		JButton btnEqual = new JButton("=");
+		btnEqual.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String answer = null;
+				second=Double.parseDouble(textField.getText());
+				if(operation=="+"){
+					result=first+second;
+					//answer=String.format("%.2f", result);
+					textField.setText(answer);
+					
+				}
+				else if(operation=="-"){
+					result=first-second;
+					//answer=String.format("%.2f", result);
+					textField.setText(answer);
+					
+				}
+				else if(operation=="*"){
+					result=first*second;
+					//answer=String.format("%.2f", result);
+					textField.setText(answer);
+					
+				}
+				else if(operation=="/"){
+					result=first/second;
+					//answer=String.format("%.2f", result);
+					textField.setText(answer);
+					
+				}
+				else if(operation=="%"){
+					result=first%second;
+					//answer=String.format("%.2f", result);
+					textField.setText(answer);
+					
+				}
+			}
+		});
 		btnEqual.setFont(new Font("Trebuchet MS", Font.BOLD, 20));
 		btnEqual.setBounds(117, 224, 51, 39);
 		frame.getContentPane().add(btnEqual);
 		
 		JButton btnPlus = new JButton("+");
+		btnPlus.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				first=Double.parseDouble(textField.getText());
+				textField.setText("");
+				operation="+";
+				
+			}
+		});
 		btnPlus.setFont(new Font("Trebuchet MS", Font.BOLD, 20));
 		btnPlus.setBounds(172, 72, 51, 39);
 		frame.getContentPane().add(btnPlus);
 		
 		JButton btnSub = new JButton("-");
+		btnSub.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				first=Double.parseDouble(textField.getText());
+				textField.setText("");
+				operation="-";
+			}
+		});
 		btnSub.setFont(new Font("Trebuchet MS", Font.BOLD, 18));
 		btnSub.setBounds(172, 113, 51, 39);
 		frame.getContentPane().add(btnSub);
 		
 		JButton btnMul = new JButton("*");
+		btnMul.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				first=Double.parseDouble(textField.getText());
+				textField.setText("");
+				operation="*";
+			}
+		});
 		btnMul.setFont(new Font("Trebuchet MS", Font.BOLD, 20));
 		btnMul.setBounds(172, 149, 51, 39);
 		frame.getContentPane().add(btnMul);
 		
 		JButton btnDivide = new JButton("/");
+		btnDivide.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				first=Double.parseDouble(textField.getText());
+				textField.setText("");
+				operation="/";
+			}
+		});
 		btnDivide.setHorizontalAlignment(SwingConstants.RIGHT);
 		btnDivide.setFont(new Font("Trebuchet MS", Font.BOLD, 20));
 		btnDivide.setBounds(172, 185, 51, 39);
 		frame.getContentPane().add(btnDivide);
 		
 		JButton btnPercent = new JButton("%");
+		btnPercent.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				first=Double.parseDouble(textField.getText());
+				textField.setText("");
+				operation="%";
+			}
+		});
 		btnPercent.setFont(new Font("Trebuchet MS", Font.BOLD, 20));
 		btnPercent.setBounds(172, 224, 51, 39);
 		frame.getContentPane().add(btnPercent);
