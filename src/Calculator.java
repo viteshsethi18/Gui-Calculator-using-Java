@@ -210,35 +210,35 @@ public class Calculator {
 		JButton btnEqual = new JButton("=");
 		btnEqual.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String answer = null;
+				String answer;
 				second=Double.parseDouble(textField.getText());
 				if(operation=="+"){
 					result=first+second;
-					//answer=String.format("%.2f", result);
+					answer=String.format("%.2f", new Object[] {new Double(result)});
 					textField.setText(answer);
 					
 				}
 				else if(operation=="-"){
 					result=first-second;
-					//answer=String.format("%.2f", result);
+					answer=String.format("%.2f", new Object[] {new Double(result)});
 					textField.setText(answer);
 					
 				}
 				else if(operation=="*"){
 					result=first*second;
-					//answer=String.format("%.2f", result);
+					answer=String.format("%.2f", new Object[] {new Double(result)});
 					textField.setText(answer);
 					
 				}
 				else if(operation=="/"){
 					result=first/second;
-					//answer=String.format("%.2f", result);
+					answer=String.format("%.2f", new Object[] {new Double(result)});
 					textField.setText(answer);
 					
 				}
 				else if(operation=="%"){
 					result=first%second;
-					//answer=String.format("%.2f", result);
+					answer=String.format("%.2f", new Object[] {new Double(result)});
 					textField.setText(answer);
 					
 				}
